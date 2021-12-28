@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+
+{% block title %}File  - download{% endblock %}
+
+{% block main %}
+<div class="row">
+                    <div class="col-12 col-xl-8 mb-4 mb-lg-0">
+                        <div class="card">
+                            <h5 class="card-header">Please Select and download the Fixed Assets List for your Department</h5>
+                            <div class="card-body">
+                                <div class="table-responsive">
+                                    <table class="table">
+                                        <thead>
+                                          <tr>
+                                            <th scope="col">No.</th>
+                                            <th scope="col">Dep't Number</th>
+                                            <th scope="col">Department Name</th>
+                                            <th scope="col">File</th>
+                                            <th scope="col"></th>
+                                          </tr>
+                                        </thead>
+                                        <tbody>
+                                        {% for num, name in departments %}
+                                          <tr>
+                                            <th scope="row">{{ forloop.counter }}</th>
+                                            <td>{{num}}</td>
+                                            <td>{{name}}</td>
+                                            <td>{{num}}_Fixed_Asset_list.xlsx</td>
+                                            <td><input type='submit' class="btn btn-sm btn-primary" value="download"></input></td>
+                                          </tr>
+                                        {% endfor %}
+                                        </tbody>
+                                      </table>
+                                </div>
+                                <a href="#" class="btn btn-block btn-light">View all</a>
+                            </div>
+                        </div>
+                    </div>
+                    {% if downloadstats %}
+                    <div class="col-12 col-xl-4">
+                        <div class="card">
+                            <h5 class="card-header">Traffic last 6 months</h5>
+                            <div class="card-body">
+                                <div id="traffic-chart"><svg xmlns:ct="http://gionkunz.github.com/chartist-js/ct" width="100%" height="100%" class="ct-chart-line" style="width: 100%; height: 100%;"><g class="ct-grids"><line x1="50" x2="50" y1="15" y2="115" class="ct-grid ct-horizontal"></line><line x1="122.25" x2="122.25" y1="15" y2="115" class="ct-grid ct-horizontal"></line><line x1="194.5" x2="194.5" y1="15" y2="115" class="ct-grid ct-horizontal"></line><line x1="266.75" x2="266.75" y1="15" y2="115" class="ct-grid ct-horizontal"></line><line x1="339" x2="339" y1="15" y2="115" class="ct-grid ct-horizontal"></line><line x1="411.25" x2="411.25" y1="15" y2="115" class="ct-grid ct-horizontal"></line><line y1="115" y2="115" x1="50" x2="483.5" class="ct-grid ct-vertical"></line><line y1="86.42857142857143" y2="86.42857142857143" x1="50" x2="483.5" class="ct-grid ct-vertical"></line><line y1="57.857142857142854" y2="57.857142857142854" x1="50" x2="483.5" class="ct-grid ct-vertical"></line><line y1="29.285714285714292" y2="29.285714285714292" x1="50" x2="483.5" class="ct-grid ct-vertical"></line></g><g><g class="ct-series ct-series-a"><path d="M50,115L50,82.143C74.083,81.19,98.167,79.286,122.25,79.286C146.333,79.286,170.417,87.857,194.5,87.857C218.583,87.857,242.667,74.923,266.75,66.429C290.833,57.934,314.917,40.587,339,35C363.083,29.413,387.167,27.381,411.25,23.571L411.25,115Z" class="ct-area"></path><path d="M50,82.143C74.083,81.19,98.167,79.286,122.25,79.286C146.333,79.286,170.417,87.857,194.5,87.857C218.583,87.857,242.667,74.923,266.75,66.429C290.833,57.934,314.917,40.587,339,35C363.083,29.413,387.167,27.381,411.25,23.571" class="ct-line"></path><line x1="50" y1="82.14285714285714" x2="50.01" y2="82.14285714285714" class="ct-point" ct:value="23000"></line><line x1="122.25" y1="79.28571428571428" x2="122.26" y2="79.28571428571428" class="ct-point" ct:value="25000"></line><line x1="194.5" y1="87.85714285714286" x2="194.51" y2="87.85714285714286" class="ct-point" ct:value="19000"></line><line x1="266.75" y1="66.42857142857143" x2="266.76" y2="66.42857142857143" class="ct-point" ct:value="34000"></line><line x1="339" y1="35" x2="339.01" y2="35" class="ct-point" ct:value="56000"></line><line x1="411.25" y1="23.57142857142857" x2="411.26" y2="23.57142857142857" class="ct-point" ct:value="64000"></line></g></g><g class="ct-labels"><foreignObject style="overflow: visible;" x="50" y="120" width="72.25" height="20"><span class="ct-label ct-horizontal ct-end" xmlns="http://www.w3.org/2000/xmlns/" style="width: 72px; height: 20px;">January</span></foreignObject><foreignObject style="overflow: visible;" x="122.25" y="120" width="72.25" height="20"><span class="ct-label ct-horizontal ct-end" xmlns="http://www.w3.org/2000/xmlns/" style="width: 72px; height: 20px;">Februrary</span></foreignObject><foreignObject style="overflow: visible;" x="194.5" y="120" width="72.25" height="20"><span class="ct-label ct-horizontal ct-end" xmlns="http://www.w3.org/2000/xmlns/" style="width: 72px; height: 20px;">March</span></foreignObject><foreignObject style="overflow: visible;" x="266.75" y="120" width="72.25" height="20"><span class="ct-label ct-horizontal ct-end" xmlns="http://www.w3.org/2000/xmlns/" style="width: 72px; height: 20px;">April</span></foreignObject><foreignObject style="overflow: visible;" x="339" y="120" width="72.25" height="20"><span class="ct-label ct-horizontal ct-end" xmlns="http://www.w3.org/2000/xmlns/" style="width: 72px; height: 20px;">May</span></foreignObject><foreignObject style="overflow: visible;" x="411.25" y="120" width="72.25" height="20"><span class="ct-label ct-horizontal ct-end" xmlns="http://www.w3.org/2000/xmlns/" style="width: 72px; height: 20px;">June</span></foreignObject><foreignObject style="overflow: visible;" y="86.42857142857143" x="10" height="28.571428571428573" width="30"><span class="ct-label ct-vertical ct-start" xmlns="http://www.w3.org/2000/xmlns/" style="height: 29px; width: 30px;">0</span></foreignObject><foreignObject style="overflow: visible;" y="57.85714285714286" x="10" height="28.571428571428573" width="30"><span class="ct-label ct-vertical ct-start" xmlns="http://www.w3.org/2000/xmlns/" style="height: 29px; width: 30px;">20000</span></foreignObject><foreignObject style="overflow: visible;" y="29.285714285714292" x="10" height="28.571428571428562" width="30"><span class="ct-label ct-vertical ct-start" xmlns="http://www.w3.org/2000/xmlns/" style="height: 29px; width: 30px;">40000</span></foreignObject><foreignObject style="overflow: visible;" y="-0.7142857142857082" x="10" height="30" width="30"><span class="ct-label ct-vertical ct-start" xmlns="http://www.w3.org/2000/xmlns/" style="height: 30px; width: 30px;">60000</span></foreignObject></g></svg></div>
+                            </div>
+                        </div>
+                    </div>
+                    {% endif %}
+                </div>
+{% endblock %}

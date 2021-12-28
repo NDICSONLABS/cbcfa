@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %}Fixed Asset Clerk - information{% endblock %}
+
+
+{% block main %}
+<form action="{% url 'clerk' %}" method="post">
+                {% csrf_token %}
+                <div class="mb-4">
+                    <label for="{{ form.name.id_for_label }}" class="form-label">{{ form.name.label }}: </label>
+                    <input name="{{ form.name.html_name }}" type="text" class="form-control" id="{{ form.name.id_for_label }}" required>
+                    {% if form.name.help_text %}
+                    <div class="form-text">{{ form.name.help_text }}</div>
+                    {% endif %}
+                    {% for error in form.name.errors %}
+                    <div class="invalid-feedback d-block text-end">{{ error }}</div>
+                    {% endfor %}
+                </div>
+                <div class="mb-4">
+                      <label class="form-label" for="{{ form.dept_number.id_for_label }}">
+                          {{form.dept_number.label}}
+                      </label>
+                    <select name="{{ form.dept_number.html_name }}" value="{{ form.dept_number.value }}" id="{{ form.dept_number.id_for_label }}" class="form-select"  required>
+                        {% for widget in form.dept_number.subwidgets %}
+                            {{ widget }}
+                        {% endfor %}
+                    </select>
+
+                </div>
+                <div class="mb-4">
+                    <label for="{{ form.phone_number.id_for_label }}" class="form-label">{{ form.phone_number.label }}: </label>
+                    <input name="{{ form.phone_number.html_name }}" type="text" class="form-control" id="{{ form.phone_number.id_for_label }}" required>
+                    {% if form.phone_number.help_text %}
+                    <div class="form-text">{{ form.phone_number.help_text }}</div>
+                    {% endif %}
+                    {% for error in form.phone_number.errors %}
+                    <div class="invalid-feedback d-block text-end">{{ error }}</div>
+                    {% endfor %}
+                </div>
+                <div class="mb-4">
+                    <label for="{{ form.email.id_for_label }}" class="form-label">{{ form.email.label }}: </label>
+                    <input name="{{ form.email.html_name }}" type="text" class="form-control" id="{{ form.email.id_for_label }}" required>
+                    {% if form.email.help_text %}
+                    <div class="form-text">{{ form.email.help_text }}</div>
+                    {% endif %}
+                    {% for error in form.email.errors %}
+                    <div class="invalid-feedback d-block text-end">{{ error }}</div>
+                    {% endfor %}
+                </div>
+                <button class="btn btn-success px-4" type="submit">Submit</button>
+            </form>
+
+
+{% endblock %}
