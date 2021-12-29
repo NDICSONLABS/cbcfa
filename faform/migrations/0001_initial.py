@@ -29,7 +29,7 @@ class Migration(migrations.Migration):
     ]
 
     operations = [
-        migrations.RunPython(create_superuser),
+##        migrations.RunPython(create_superuser),
         migrations.CreateModel(
             name='UtilFields',
             fields=[
