@@ -111,6 +111,9 @@ USE_I18N = True
 USE_L10N = True
 USE_TZ = True
 
+if os.environ['PRODUCTION']:
+    DEBUG = False
+    
 # Change 'default' database configuration with $DATABASE_URL.
 DATABASES['default'].update(dj_database_url.config(conn_max_age=500, ssl_require=True))
 
