@@ -6,6 +6,22 @@
 
 
 {% block main %}
+<div class="card">
+  <div class="card-header text-center">
+    <h3>CBC - FIXED ASSET CLERK INFORMATION</h3>
+    <p>Please provide us your details to proceed to download the FIXED ASSET - LIST File.</p>
+  </div>
+  <div class="card-body">
+  <div class="card-body">
+        <div class="m-7">
+        {% if messages %}
+        {% for msg in messages %}
+        <div class="alert alert-{% if msg.tags == 'error' %}danger{% else %}info{% endif %}" role="alert">
+        
+  {{msg}}
+</div>
+        {% endfor %}
+        {% endif %}
 <form action="{% url 'clerk' %}" method="post">
                 {% csrf_token %}
                 <div class="mb-4">
@@ -51,6 +67,8 @@
                 </div>
                 <button class="btn btn-success px-4" type="submit">Submit</button>
             </form>
-
-
+            </div>
+</div>
+</div>
+</div>
 {% endblock %}

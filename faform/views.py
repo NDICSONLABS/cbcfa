@@ -23,7 +23,7 @@ def clerk(request):
             messages.success(request, "Your information was succesfully added")
             return redirect("https://drive.google.com/drive/folders/1na6yGjYI6wbuhWaAZIFDxsH2l7-plfuS?usp=sharing")
 
-
+    messages.error(request, "Please provide all information")
     return render(request, 'clerk.html', {'form':form})
 
 def download(request):

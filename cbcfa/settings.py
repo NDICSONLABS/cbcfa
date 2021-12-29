@@ -13,6 +13,14 @@ import os
 import dj_database_url
 import django_heroku
 
+def check_env():
+    try:
+        os.environ['PRODUCTION']
+        return True
+    except KeyError as e:
+        print(f'no variable exit \n\n{e}')
+        return False
+    
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
@@ -111,7 +119,7 @@ USE_I18N = True
 USE_L10N = True
 USE_TZ = True
 
-if os.environ['PRODUCTION']:
+if check_env():
     DEBUG = False
     
 # Change 'default' database configuration with $DATABASE_URL.
