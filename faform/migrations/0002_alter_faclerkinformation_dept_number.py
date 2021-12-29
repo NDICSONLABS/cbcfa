@@ -6,16 +6,20 @@ from django.contrib.auth import get_user_model
 import os
 
 def create_superuser(apps, schema_editor):
+    username=os.environ['ADMIN_USERNAME']
+    email=os.environ['ADMIN_EMAIL']
+    password=os.environ['ADMIN_PASSWORD']
     superuser = get_user_model()(
         is_active=True,
         is_superuser=True,
         is_staff=True,
-        username=os.environ['ADMIN_USERNAME'],
-        email=os.environ['ADMIN_EMAIL'],
+        username=username,
+        email=email,
         last_login=timezone.now(),
     )
-    superuser.set_password(os.environ['ADMIN_PASSWORD'])
+    superuser.set_password(password)
     superuser.save()
+    print(f'{username}{email}{password}- this is email and username')
 
 
 class Migration(migrations.Migration):
